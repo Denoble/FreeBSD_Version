@@ -8,12 +8,24 @@
 #include<dirent.h>
 int main(){
 	
-	int fd;
+	int fd,fd1;
 	fd =open("test.txt",O_RDONLY);
 	if(fd<0){
 		printf("open() returned NULL\n");
 		return 1;
 	}
-	printf("open() succeedded\n");
+	else{
+		printf("open() succeedded\n");
+	}
+	fd1=access("test.txt",R_OK);
+	if(fd1<0){
+		printf("access() returned NULL\n");
+		return 1;
+	}
+	else{
+		printf("access() succeedded\n");
+	}
+	
+	
 	return 0;
 }

@@ -13,11 +13,13 @@ int open(const char *pathname,int flags){
 	char cwd[128];
 	int dir_fd;
 	DIR *dir;
+	printf("\n");
 	if(getcwd(cwd,sizeof(cwd)) !=NULL){
 		dir=opendir(cwd);
 		dir_fd=dirfd(dir);
 		write(STDOUT_FILENO,cwd,strlen(cwd));
-		printf("%s","\n");
+		printf("\n");
+		printf("From my open() function \n");
 		printf("%d\n",dir_fd);
 	}
 	real_openat=dlsym(RTLD_NEXT,"openat");
